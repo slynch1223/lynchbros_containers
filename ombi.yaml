@@ -1,0 +1,17 @@
+---
+services:
+  ombi:
+    image: linuxserver/ombi:latest
+    container_name: Ombi
+    network_mode: host
+    devices:
+      - /share/CACHEDEV1_DATA/Container/Ombi/dev/dri:/dev/dri
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /share/CACHEDEV1_DATA/Container/Ombi:/config
+    ports:
+      - 3579:3579
+    restart: unless-stopped
