@@ -8,16 +8,23 @@ networks:
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: linuxserver/sonarr:latest
     container_name: sonarr
+    restart: unless-stopped
     environment:
       - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PGID=100
+      - TZ=America/New_York
     volumes:
-      - /path/to/data:/config
-      - /path/to/tvseries:/tv #optional
-      - /path/to/downloadclient-downloads:/downloads #optional
+      - /share/CACHEDEV1_DATA/Container/sonarr:/config
+      - /share/CACHEDEV2_DATA/Media/Media
+    networks:
+      host_bridge:
+        ipv4_address: 192.168.100.15
     ports:
       - 8989:8989
-    restart: unless-stopped
+
+    # volumes:
+    #   - /path/to/data:/config
+    #   - /path/to/tvseries:/tv #optional
+    #   - /path/to/downloadclient-downloads:/downloads #optional
