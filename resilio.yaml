@@ -1,0 +1,24 @@
+---
+version: '3'
+
+networks:
+  host_bridge:
+    name: qnet-static-eth0-076754
+    external: true
+
+services:
+  resilio-sync:
+    image: linuxserver/resilio-sync:latest
+    container_name: ResilioSync
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=America/New_York
+    volumes:
+      - /share/CACHEDEV1_DATA/Container/Resilio:/config
+      - /share/CACHEDEV2_DATA/Media:/downloads
+      - /share/CACHEDEV2_DATA/Media:/sync
+    networks:
+      host_bridge:
+        ipv4_address: 192.168.100.11
