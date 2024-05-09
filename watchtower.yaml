@@ -1,0 +1,25 @@
+---
+version: '3'
+
+networks:
+  host_bridge:
+    name: qnet-static-eth0-076754
+    external: true
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: WatchTower
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_DEBUG=true
+      - WATCHTOWER_LOG_LEVEL=info
+      - WATCHTOWER_REMOVE_VOLUMES=true
+      - WATCHTOWER_SCHEDULE=0 0 10 * * *
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      host_bridge:
+        ipv4_address: 192.168.100.17
