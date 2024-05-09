@@ -1,0 +1,20 @@
+---
+version: '3'
+
+networks:
+  host_bridge:
+    name: qnet-static-eth0-076754
+    external: true
+
+services:
+  openspeedtest:
+    image: openspeedtest/latest:latest
+    container_name: OpenSpeedTest
+    restart: unless-stopped
+    environment:
+      - CHANGE_CONTAINER_PORTS=True
+      - HTTP_PORT=80
+      - HTTPS_PORT=443
+    networks:
+      host_bridge:
+        ipv4_address: 192.168.100.18
