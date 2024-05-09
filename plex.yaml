@@ -22,12 +22,5 @@ services:
     networks:
       host_bridge:
         ipv4_address: 192.168.100.10
-    ports:
-      - 1900:1900/udp
-      - 5353:5353/udp
-      - 8324:8324/udp
-      - 32400:32400
-      - 32410-32414:32410-32414/udp
-      - 32469:32469
     devices:
       - /share/CACHEDEV1_DATA/Container/Plex/dev/dri:/dev/dri
