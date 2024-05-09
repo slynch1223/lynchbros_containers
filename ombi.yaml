@@ -20,5 +20,3 @@ services:
     networks:
       host_bridge:
         ipv4_address: 192.168.100.20
-    ports:
-      - 3579:3579
