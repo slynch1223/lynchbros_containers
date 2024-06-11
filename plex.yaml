@@ -3,8 +3,16 @@ version: '3'
 
 networks:
   host_bridge:
-    name: qnet-static-eth0-076754
-    external: true
+    driver: qnet
+    driver_opts:
+      iface: "eth0"
+    ipam:
+      driver: qnet
+      options:
+        iface: "eth0"
+      config:
+        - subnet: 192.168.60.0/24
+          gateway: 192.168.60.1
 
 services:
   plex:
@@ -17,10 +25,10 @@ services:
       - TZ=America/New_York
     volumes:
       - /share/CACHEDEV1_DATA/Container/Plex:/config
-      - /share/CACHEDEV2_DATA/Media/Media:/data
+      - /share/CACHEDEV2_DATA/Media/media:/data
       - /share/CACHEDEV1_DATA/Container/Plex/dev/dri:/dev/dri
     networks:
       host_bridge:
-        ipv4_address: 192.168.100.10
+        ipv4_address: 192.168.60.10
     devices:
       - /share/CACHEDEV1_DATA/Container/Plex/dev/dri:/dev/dri
