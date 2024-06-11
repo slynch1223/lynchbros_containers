@@ -3,8 +3,16 @@ version: '3'
 
 networks:
   host_bridge:
-    name: qnet-static-eth0-076754
-    external: true
+    driver: qnet
+    driver_opts:
+      iface: "eth0"
+    ipam:
+      driver: qnet
+      options:
+        iface: "eth0"
+      config:
+        - subnet: 192.168.60.0/24
+          gateway: 192.168.60.1
 
 services:
   openspeedtest:
@@ -17,4 +25,4 @@ services:
       - HTTPS_PORT=443
     networks:
       host_bridge:
-        ipv4_address: 192.168.100.18
+        ipv4_address: 192.168.60.18
