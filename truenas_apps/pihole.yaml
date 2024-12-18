@@ -1,14 +1,14 @@
 networks:
-  macvlan_net:
+  external:
     external: True
 services:
-  app:
+  pihole:
     environment:
       TZ: America/New_York
       WEBPASSWORD: WhyYouWant2Know?
     image: pihole/pihole:latest
     networks:
-      macvlan_net:
+      external:
         ipv4_address: 192.168.50.2
     restart: unless-stopped
     volumes:

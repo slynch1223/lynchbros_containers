@@ -1,15 +1,18 @@
 networks:
-  macvlan_net:
+  internal:
+    external: True
+  external:
     external: True
 services:
-  app:
+  prowlarr:
     environment:
       PGID: 568
       PUID: 568
       TZ: America/New_York
     image: linuxserver/prowlarr:latest
     networks:
-      macvlan_net:
+      internal:
+      external:
         ipv4_address: 192.168.50.22
     restart: unless-stopped
     volumes:

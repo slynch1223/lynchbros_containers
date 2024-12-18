@@ -2,7 +2,7 @@ name: immich
 networks:
   immich_bridge:
     driver: bridge
-  macvlan_net:
+  external:
     external: True
 services:
   database:
@@ -60,7 +60,7 @@ services:
     image: ghcr.io/immich-app/immich-server:release
     networks:
       immich_bridge: Null
-      macvlan_net:
+      external:
         ipv4_address: 192.168.50.6
     restart: always
     volumes:

@@ -1,15 +1,18 @@
 networks:
-  macvlan_net:
+  internal:
+    external: True
+  external:
     external: True
 services:
-  app:
+  recyclarr:
     environment:
       CRON_SCHEDULE: '@daily'
       RECYCLARR_CREATE_CONFIG: True
       TZ: America/New_York
     image: ghcr.io/recyclarr/recyclarr:latest
     networks:
-      macvlan_net:
+      internal:
+      external:
         ipv4_address: 192.168.50.26
     restart: unless-stopped
     volumes:

@@ -1,15 +1,15 @@
 networks:
-  macvlan_net:
+  external:
     external: True
 services:
-  app:
+  resilio:
     environment:
       PGID: 568
       PUID: 568
       TZ: America/New_York
     image: linuxserver/resilio-sync:latest
     networks:
-      macvlan_net:
+      external:
         ipv4_address: 192.168.50.27
     restart: unless-stopped
     volumes:

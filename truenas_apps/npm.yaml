@@ -1,8 +1,10 @@
 networks:
-  macvlan_net:
+  internal:
+    external: True
+  external:
     external: True
 services:
-  app:
+  npm:
     environment:
       DISABLE_IPV6: 'true'
       PGID: 0
@@ -10,7 +12,8 @@ services:
       TZ: America/New_York
     image: jc21/nginx-proxy-manager:latest
     networks:
-      macvlan_net:
+      internal:
+      external:
         ipv4_address: 192.168.50.3
     restart: unless-stopped
     volumes:

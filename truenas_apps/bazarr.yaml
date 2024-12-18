@@ -1,15 +1,18 @@
 networks:
-  macvlan_net:
+  internal:
+    external: True
+  external:
     external: True
 services:
-  app:
+  bazarr:
     environment:
       PGID: 568
       PUID: 568
       TZ: America/New_York
     image: linuxserver/bazarr:latest
     networks:
-      macvlan_net:
+      internal:
+      external:
         ipv4_address: 192.168.50.25
     restart: unless-stopped
     volumes:

@@ -56,17 +56,17 @@ networks:
 
 - Before deploying any apps, we need to create our Docker networks
   - SSH into the TrueNas server and run `sudo -s`
-  - Create a public facing `macvlan_net` network that matches your actual network configuration. (Note: the name of the network is the last value)
+  - Create a public facing `macvlan` network that matches your actual network configuration. (Note: the name of the network is the last value)
 
     ```bash
     docker network create --driver macvlan \
       --subnet=192.168.50.0/24 \
       --gateway=192.168.50.1 \
-      -o parent=eth0 \
-      macvlan_net
+      -o parent=enp2s0 \
+      external
     ```
 
-  - Create a private facing `internal` network for our apps to communicate privately over
+  - Create a private facing `bridge` network for our apps to communicate privately over
 
     ```bash
     docker network create \

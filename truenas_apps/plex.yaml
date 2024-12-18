@@ -1,8 +1,8 @@
 networks:
-  macvlan_net:
+  external:
     external: True
 services:
-  app:
+  plex:
     devices:
       - /dev/dri:/dev/dri
     environment:
@@ -12,7 +12,7 @@ services:
       VERSION: latest
     image: linuxserver/plex:latest
     networks:
-      macvlan_net:
+      external:
         ipv4_address: 192.168.50.5
     restart: unless-stopped
     volumes:
