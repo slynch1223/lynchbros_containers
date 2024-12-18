@@ -1,0 +1,18 @@
+networks:
+  macvlan_net:
+    external: True
+services:
+  app:
+    environment:
+      DISABLE_IPV6: 'true'
+      PGID: 0
+      PUID: 0
+      TZ: America/New_York
+    image: jc21/nginx-proxy-manager:latest
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.50.3
+    restart: unless-stopped
+    volumes:
+      - /mnt/zPool2/data/app_configs/npm/data:/data
+      - /mnt/zPool2/data/app_configs/npm/letsencrypt:/etc/letsencrypt

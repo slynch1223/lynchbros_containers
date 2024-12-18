@@ -15,14 +15,17 @@ networks:
           gateway: 192.168.60.1
 
 services:
-  openspeedtest:
-    image: openspeedtest/latest:latest
-    container_name: OpenSpeedTest
+  resilio-sync:
+    image: pihole/pihole:latest
+    container_name: PiHole
     restart: unless-stopped
     environment:
-      - CHANGE_CONTAINER_PORTS=True
-      - HTTP_PORT=80
-      - HTTPS_PORT=443
+      - PUID=0
+      - PGID=0
+      - TZ=America/New_York
+      - WEBPASSWORD=WhyYouWant2Know?
+    volumes:
+      - /share/CACHEDEV1_DATA/Container/PiHole/config:/config
     networks:
       host_bridge:
-        ipv4_address: 192.168.60.18
+        ipv4_address: 192.168.60.2

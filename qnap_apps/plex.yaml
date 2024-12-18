@@ -1,0 +1,35 @@
+---
+version: '3'
+
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: Plex
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=0
+      - TZ=America/New_York
+      - VERSION=latest
+    volumes:
+      - /share/CACHEDEV1_DATA/Container/Plex:/config
+      - /share/CACHEDEV2_DATA/Media/media:/data
+    tmpfs: /transcode
+    networks:
+      host_bridge:
+        ipv4_address: 192.168.60.10
+    devices:
+      - /dev/dri:/dev/dri
+
+networks:
+  host_bridge:
+    driver: qnet
+    driver_opts:
+      iface: "eth0"
+    ipam:
+      driver: qnet
+      options:
+        iface: "eth0"
+      config:
+        - subnet: 192.168.60.0/24
+          gateway: 192.168.60.1

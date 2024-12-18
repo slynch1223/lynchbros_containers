@@ -1,0 +1,17 @@
+networks:
+  macvlan_net:
+    external: True
+services:
+  app:
+    environment:
+      PGID: 568
+      PUID: 568
+      TZ: America/New_York
+    image: linuxserver/sabnzbd:latest
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.50.21
+    restart: unless-stopped
+    volumes:
+      - /mnt/zPool2/data/app_configs/sabnzbd:/config
+      - /mnt/zPool2/data:/data

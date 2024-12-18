@@ -1,0 +1,9 @@
+services:
+  app:
+    environment:
+      API_KEY: _JS3sM5EvF7BJKmC-7WMQjrEI9LCeNWBKrg7W7_6
+      PROXIED: True
+      TZ: America/New_York
+      ZONE: lynchbros.org
+    image: oznu/cloudflare-ddns:latest
+    restart: unless-stopped

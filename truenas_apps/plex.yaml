@@ -1,0 +1,24 @@
+networks:
+  macvlan_net:
+    external: True
+services:
+  app:
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      PGID: 0
+      PUID: 0
+      TZ: America/New_York
+      VERSION: latest
+    image: linuxserver/plex:latest
+    networks:
+      macvlan_net:
+        ipv4_address: 192.168.50.5
+    restart: unless-stopped
+    volumes:
+      - /mnt/zPool2/data/app_configs/plex:/config
+      - /mnt/zPool2/data/media:/data
+      - target: /transcode
+        tmpfs:
+          size: 32G
+        type: tmpfs

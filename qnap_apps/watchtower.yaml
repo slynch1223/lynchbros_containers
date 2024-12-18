@@ -25,7 +25,7 @@ services:
       - WATCHTOWER_DEBUG=true
       - WATCHTOWER_LOG_LEVEL=info
       - WATCHTOWER_REMOVE_VOLUMES=true
-      - WATCHTOWER_SCHEDULE=0 0 10 * * *
+      - WATCHTOWER_SCHEDULE=0 0 * * * *
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
