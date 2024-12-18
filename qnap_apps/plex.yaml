@@ -17,7 +17,7 @@ services:
     tmpfs: /transcode
     networks:
       host_bridge:
-        ipv4_address: 192.168.60.10
+        ipv4_address: 192.168.60.6
     devices:
       - /dev/dri:/dev/dri
 

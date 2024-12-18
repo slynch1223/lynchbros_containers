@@ -30,4 +30,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       host_bridge:
-        ipv4_address: 192.168.60.17
+        ipv4_address: 192.168.60.7
