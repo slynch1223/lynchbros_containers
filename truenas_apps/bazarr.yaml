@@ -1,8 +1,6 @@
 networks:
   internal:
     external: True
-  external:
-    external: True
 services:
   bazarr:
     environment:
@@ -11,9 +9,7 @@ services:
       TZ: America/New_York
     image: linuxserver/bazarr:latest
     networks:
-      internal:
-      external:
-        ipv4_address: 192.168.50.25
+      internal: Null
     restart: unless-stopped
     volumes:
       - /mnt/zPool2/data/app_configs/bazarr:/config

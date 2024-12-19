@@ -1,8 +1,6 @@
 networks:
   internal:
     external: True
-  external:
-    external: True
 services:
   radarr:
     environment:
@@ -12,8 +10,6 @@ services:
     image: linuxserver/radarr:latest
     networks:
       internal:
-      external:
-        ipv4_address: 192.168.50.23
     restart: unless-stopped
     volumes:
       - /mnt/zPool2/data/app_configs/radarr:/config

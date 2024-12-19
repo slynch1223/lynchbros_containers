@@ -1,8 +1,6 @@
 networks:
   internal:
     external: True
-  external:
-    external: True
 services:
   sonarr:
     environment:
@@ -12,8 +10,6 @@ services:
     image: linuxserver/sonarr:latest
     networks:
       internal:
-      external:
-        ipv4_address: 192.168.50.24
     restart: unless-stopped
     volumes:
       - /mnt/zPool2/data/app_configs/sonarr:/config
